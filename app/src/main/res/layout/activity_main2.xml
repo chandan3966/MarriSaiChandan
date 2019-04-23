@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main2Activity">
+
+
+    <LinearLayout
+        android:layout_width="417dp"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-6dp">
+
+        <com.sdsmdg.harjot.longshadows.LongShadowsImageView
+            android:layout_width="413dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shadow_angle="90"
+            app:shadow_blur_enabled="true"
+            app:shadow_endColor="@color/black"
+            app:titleMarginStart="60dp"
+            app:titleTextColor="#fff"
+            tools:ignore="MissingConstraints"></com.sdsmdg.harjot.longshadows.LongShadowsImageView>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
