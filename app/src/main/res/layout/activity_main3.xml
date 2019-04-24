@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main3Activity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="417dp"
+        android:layout_height="57dp"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-6dp">
+
+        <com.sdsmdg.harjot.longshadows.LongShadowsImageView
+            android:id="@+id/shadow"
+            android:layout_width="413dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="-7dp"
+            android:layout_marginTop="-8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shadow_angle="90"
+            app:shadow_blur_enabled="true"
+            app:shadow_endColor="@color/black"
+            app:titleMarginStart="60dp"
+            app:titleTextColor="#fff"
+            tools:ignore="MissingConstraints">
+
+        </com.sdsmdg.harjot.longshadows.LongShadowsImageView>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="37dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-59dp"
+            android:background="@drawable/ic_arrow_back_black_24dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="362dp"
+        android:layout_height="169dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:translationZ="-3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:srcCompat="@drawable/sheet1" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="362dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:translationZ="-3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:srcCompat="@drawable/sheet2" />
+
+</android.support.constraint.ConstraintLayout>
