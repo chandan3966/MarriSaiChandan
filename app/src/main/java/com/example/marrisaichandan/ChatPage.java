@@ -1,6 +1,5 @@
 package com.example.marrisaichandan;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,10 +11,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,11 +26,13 @@ import com.sdsmdg.harjot.longshadows.LongShadowsImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ChatPage extends AppCompatActivity {
 
     Button b1,b2;
     EditText e;
     String img,imgsub;
+    ConstraintLayout rl;
     SharedPreferences sp;
     LongShadowsImageView shadow;
     ListView listView;
@@ -40,12 +41,15 @@ public class ChatPage extends AppCompatActivity {
     ConstraintLayout cl;
 
 
+
     List<ChatBubble> chatBubbles;
     ArrayAdapter<ChatBubble> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_page);
+        rl = findViewById(R.id.layout);
+
 
         showdialogbox();
         listView = findViewById(R.id.listview);
@@ -90,50 +94,71 @@ public class ChatPage extends AppCompatActivity {
             }
         });
 
-        listView.setOnTouchListener(new View.OnTouchListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(),"list",Toast.LENGTH_SHORT).show();
                 if (!isNetworkConnected()){
                     showdialogbox();
                 }
                 else {
                     if(e.getText().toString().length()<1){
-                        Toast.makeText(getApplicationContext(),"please enter",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"list enter",Toast.LENGTH_SHORT).show();
                     }
                     else {
                         if (select == 0)
-                            select++;
+                            select = 0;
+                        else if (select == 1)
+                            select = 1;
+                        else if (select == 2)
+                            select = 2;
+                        else if (select == 3)
+                            select = 3;
                         else
-                            select--;
+                            select = 4;
                         ChatBubble Chatbubble = new ChatBubble(e.getText().toString(),select);
                         chatBubbles.add(Chatbubble);
                         adapter.notifyDataSetChanged();
                         e.setText("");
+                        if (select == 4)
+                            select = 0;
+                        else
+                            select++;
                     }
                 }
-                return true;
             }
         });
 
         cl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"layout",Toast.LENGTH_SHORT).show();
                 if (!isNetworkConnected()){
                     showdialogbox();
                 }
                 else {
                     if(e.getText().toString().length()<1){
-                        Toast.makeText(getApplicationContext(),"please enter",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"layout enter",Toast.LENGTH_SHORT).show();
                     }
                     else {
                         if (select == 0)
-                            select++;
+                            select = 0;
+                        else if (select == 1)
+                            select = 1;
+                        else if (select == 2)
+                            select = 2;
+                        else if (select == 3)
+                            select = 3;
                         else
-                            select--;
+                            select = 4;
                         ChatBubble Chatbubble = new ChatBubble(e.getText().toString(),select);
                         chatBubbles.add(Chatbubble);
                         adapter.notifyDataSetChanged();
                         e.setText("");
+                        if (select == 4)
+                            select = 0;
+                        else
+                            select++;
                     }
                 }
             }
@@ -150,20 +175,25 @@ public class ChatPage extends AppCompatActivity {
         if (imgsub.equals("a")){
             if (img.equals("1")){
                 shadow.setImageResource(R.drawable.cat11);
+                rl.setBackgroundResource(R.drawable.emo1);
             }
             else if (img.equals("2")){
                 shadow.setImageResource(R.drawable.cat21);
+                rl.setBackgroundResource(R.drawable.fun);
             }
             else if (img.equals("3")){
                 shadow.setImageResource(R.drawable.cat31);
+                rl.setBackgroundResource(R.drawable.anna);
             }
             else{
                 shadow.setImageResource(R.drawable.cat41);
+                rl.setBackgroundResource(R.drawable.romance);
             }
         }
         else{
             if (img.equals("1")){
-                shadow.setImageResource(R.drawable.cat21);
+                shadow.setImageResource(R.drawable.cat12);
+                rl.setBackgroundResource(R.drawable.emo2);
             }
             else if (img.equals("2")){
 //            shadow.setImageResource(R.drawable.cat21);
@@ -207,4 +237,5 @@ public class ChatPage extends AppCompatActivity {
 
         return cm.getActiveNetworkInfo() != null;
     }
+
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class MessageAdapter extends ArrayAdapter<ChatBubble> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         ViewHolder holder;
+        ImgHolder holder1;
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         ChatBubble chatbubble = getItem(position);
         int type=chatbubble.getType();
@@ -34,26 +36,52 @@ public class MessageAdapter extends ArrayAdapter<ChatBubble> {
 //            holder = (ViewHolder) convertView.getTag();
 //        }
 //        else{
-        if (type == 0)
+        if (type == 1)
             LayoutResource = R.layout.rightchat;
-        else
+        else if (type == 0)
             LayoutResource = R.layout.leftchat;
+        else if (type == 3)
+            LayoutResource = R.layout.rightimage;
+        else if (type == 2)
+            LayoutResource = R.layout.leftimage;
+        else
+            LayoutResource = R.layout.middle;
         convertView = inflater.inflate(LayoutResource,parent,false);
-        holder = new ViewHolder(convertView);
-        convertView.setTag(holder);
-        Log.d("hello", type+"");
+
 //        }
-        holder.msg.setText(chatbubble.getContent());
+        if (type!=2 || type!=3){
+            holder = new ViewHolder(convertView,chatbubble.getContent());
+            convertView.setTag(holder);
+            Log.d("hello", type+"");
+//            holder.msg.setText(chatbubble.getContent());
+        }
+        else{
+           holder1 = new ImgHolder(convertView);
+           convertView.setTag(holder1);
+            Log.d("hello", type+"");
+//            holder1.img.setImageResource(Integer.parseInt(chatbubble.getContent()));
+        }
+
         return convertView;
     }
 
 
     private class ViewHolder{
         public TextView msg;
-        public ViewHolder(View v){
+        public ViewHolder(View v,String s){
 
             msg = (TextView) v.findViewById(R.id.txt_msg);
+            msg.setText(s);
         }
 
     }
+
+    private class ImgHolder{
+        public ImageView img;
+        public ImgHolder(View v){
+            img = (ImageView) v.findViewById(R.id.img);
+        }
+
+    }
+
 }
