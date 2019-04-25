@@ -37,12 +37,31 @@ public class ChatPage extends AppCompatActivity {
     SharedPreferences sp;
     LongShadowsImageView shadow;
     ListView listView;
-    int select = 0;
-    ViewPager viewPager;
+    int select = 0,sel=0;
     ConstraintLayout cl;
     TextView rece,send;
     int count = 0;
-    String[] common = {"the","of","and","a","to","in","is","you","that","it","he","was","for","on","are","as","with","his","they","I","at","be","this","have","from","or","one","had","by","word","but","not","what","all","were","we","when","your","can","said","there","use","an","each","which","she","do","how","their","if","will","up","other","about","out","many","then","them","these","so","some","her","would","make","like","him","into","time","has","look","two","more","write","go","see","number","no","way","could","people","my","than","first","water","been","call","who","oil","its","now","find","long","down","day","did","get","come","made","may","part"};
+    String[] imigi = {"ghost","host1"};
+    int[] imigicount = {2,2};
+    String[] common = {"24 April,2019","hi mom","hey baby","had your dinner","yes dear","what about you",
+            "yes mom","Mom i'll send u a pic","wait","what is this?","Mom its a ghost captured in camera","Ohh my god!",
+            "Is that true","yes mom","we went on a tour","there we went for a safari","we were taking photos of deers","And then we accidentally took it",
+            "Please dear","get out of there as early as possible","if u don't","i will come there","I swear","Mom it's our last day",
+            "don't worry mom","We will start today","i will see u tomorrow","Good night mom","Good night dear","Be careful",
+            "24 April,2019","Good morning mom","Good morning baby","Started from there","yes mom","we were on our way",
+            "(A few hours later)","Baby where are u","Baby please reply","Mom please i'm safe","And i will come soon","And don't bother me",
+            "Ok baby","Sorry","come fast","i'll be waiting for you","ok mom","bye",
+            "Mom","what baby","whats this","another ghost","Baby...........","...End of story..."};
+    int[] commoncount = {4,0,1,0,1,1,
+                         0,0,0,1,0,1,
+                         1,0,0,0,0,0,
+                         1,1,1,1,1,0,
+                         0,0,0,0,1,1,
+                         4,0,1,1,0,0,
+                         4,1,1,0,0,0,
+                         1,1,1,1,0,0,
+                         0,1,1,0,1,4};
+
 
 
     List<ChatBubble> chatBubbles;
@@ -56,10 +75,11 @@ public class ChatPage extends AppCompatActivity {
         send = findViewById(R.id.sender);
 
 
-
         showdialogbox();
         listView = findViewById(R.id.listview);
         listView.setSmoothScrollbarEnabled(true);
+        listView.setTouchscreenBlocksFocus(false);
+        Toast.makeText(getApplicationContext(), common.length+"",Toast.LENGTH_SHORT).show();
 
         cl = findViewById(R.id.constraintLayout);
 
@@ -133,25 +153,24 @@ public class ChatPage extends AppCompatActivity {
 
 
     public void loopchater(){
-        if (select == 0)
-            select = 0;
-        else if (select == 1)
-            select = 1;
-        else if (select == 2)
-            select = 2;
-        else if (select == 3)
-            select = 3;
-        else
-            select = 4;
-        ChatBubble Chatbubble = new ChatBubble(common[count],select);
-        chatBubbles.add(Chatbubble);
-        adapter.notifyDataSetChanged();
-        e.setText("");
-        count++;
-        if (select == 4)
-            select = 0;
-        else
-            select++;
+        if (count<common.length){
+            if (sel!=0){
+                ChatBubble Chatbubble = new ChatBubble(imigi[select],imigicount[select]);
+                chatBubbles.add(Chatbubble);
+                adapter.notifyDataSetChanged();
+                select++;
+                sel = 0;
+            }
+            else{
+                ChatBubble Chatbubble = new ChatBubble(common[count],commoncount[count]);
+                chatBubbles.add(Chatbubble);
+                adapter.notifyDataSetChanged();
+                if (count == 8 || count == 48){
+                    sel++;
+                }
+                count++;
+            }
+        }
     }
 
 

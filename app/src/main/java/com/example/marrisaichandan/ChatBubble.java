@@ -1,7 +1,7 @@
 package com.example.marrisaichandan;
 
 public class ChatBubble {
-    private String content,time;
+    private String content;
     private int type;
 
     public ChatBubble(String content,int type) {

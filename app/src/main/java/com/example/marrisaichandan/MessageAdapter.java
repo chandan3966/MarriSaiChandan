@@ -1,6 +1,7 @@
 package com.example.marrisaichandan;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,14 +50,14 @@ public class MessageAdapter extends ArrayAdapter<ChatBubble> {
         convertView = inflater.inflate(LayoutResource,parent,false);
 
 //        }
-        if (type!=2 || type!=3){
+        if (type!=2 && type!=3){
             holder = new ViewHolder(convertView,chatbubble.getContent());
             convertView.setTag(holder);
             Log.d("hello", type+"");
 //            holder.msg.setText(chatbubble.getContent());
         }
         else{
-           holder1 = new ImgHolder(convertView);
+           holder1 = new ImgHolder(convertView,chatbubble.getContent());
            convertView.setTag(holder1);
             Log.d("hello", type+"");
 //            holder1.img.setImageResource(Integer.parseInt(chatbubble.getContent()));
@@ -78,8 +79,10 @@ public class MessageAdapter extends ArrayAdapter<ChatBubble> {
 
     private class ImgHolder{
         public ImageView img;
-        public ImgHolder(View v){
+        public ImgHolder(View v,String s){
             img = (ImageView) v.findViewById(R.id.img);
+            int res = v.getResources().getIdentifier(s,"drawable","com.example.marrisaichandan");
+            img.setImageResource(res);
         }
 
     }
