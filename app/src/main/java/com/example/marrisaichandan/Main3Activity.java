@@ -8,6 +8,7 @@ import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -36,6 +37,7 @@ public class Main3Activity extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.setStatusBarColor(this.getResources().getColor(R.color.black));
         }
+
 
         showdialogbox();
         sp = getSharedPreferences("mainselection", Context.MODE_PRIVATE);
@@ -232,5 +234,15 @@ public class Main3Activity extends AppCompatActivity {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
         return cm.getActiveNetworkInfo() != null;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            Intent i = new Intent(Main3Activity.this,Main2Activity.class);
+            startActivity(i);
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

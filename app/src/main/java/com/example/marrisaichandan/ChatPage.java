@@ -1,6 +1,7 @@
 package com.example.marrisaichandan;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -12,6 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -81,7 +83,7 @@ public class ChatPage extends AppCompatActivity {
         listView = findViewById(R.id.listview);
         listView.setSmoothScrollbarEnabled(true);
         listView.setTouchscreenBlocksFocus(false);
-        Toast.makeText(getApplicationContext(), common.length+"",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), common.length+"",Toast.LENGTH_SHORT).show();
 
         cl = findViewById(R.id.constraintLayout);
 
@@ -135,7 +137,7 @@ public class ChatPage extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(),"list",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(),"list",Toast.LENGTH_SHORT).show();
                 if (!isNetworkConnected()){
                     showdialogbox();
                 }
@@ -148,7 +150,7 @@ public class ChatPage extends AppCompatActivity {
         cl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"layout",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(),"layout",Toast.LENGTH_SHORT).show();
                 if (!isNetworkConnected()){
                     showdialogbox();
                 }
@@ -181,6 +183,37 @@ public class ChatPage extends AppCompatActivity {
                 }
                 count++;
             }
+        }
+        else{
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(ChatPage.this);
+            // Setting Dialog Title
+            alertDialog.setTitle("Read Again");
+            // Setting Dialog Message
+            alertDialog.setMessage("Are you sure you want to read this story again?");
+            // Setting Icon to Dialog
+            // Setting Positive "Yes" Button
+            alertDialog.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Cursor c2 = db.rawQuery("SELECT * FROM chatpause WHERE id='" + img + "' and subid='" + imgsub + "'", null);
+                   if (c2.getCount()!=0){
+                       count = 0;
+                       select = 0;
+                       db.execSQL("UPDATE chatpause SET number='" + count+"" +"" + "' WHERE id='" + img+"" + "' and subid='" + imgsub+"" + "'");
+                       chatBubbles.clear();
+                       adapter.notifyDataSetChanged();
+                   }
+                }
+            });
+
+            // Setting Negative "NO" Button
+            alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+
+            alertDialog.show();
         }
     }
 
@@ -287,4 +320,20 @@ public class ChatPage extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            Cursor c = db.rawQuery("SELECT * FROM chatpause WHERE id='" + img + "' and subid='" + imgsub + "'", null);
+            if (c.getCount()!=0 && c.moveToFirst()){
+                db.execSQL("UPDATE chatpause SET number='" + count+"" +"" + "' WHERE id='" + img+"" + "' and subid='" + imgsub+"" + "'");
+            }
+            else{
+                db.execSQL("INSERT INTO chatpause VALUES('" + img+"" + "','" + imgsub+"" + "','" + count+"" + "');");
+            }
+            Intent i =  new Intent(ChatPage.this,Main3Activity.class);
+            startActivity(i);
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
