@@ -199,8 +199,10 @@ public class ChatPage extends AppCompatActivity {
                    if (c2.getCount()!=0){
                        count = 0;
                        select = 0;
+                       Toast.makeText(getApplicationContext(),"updated and refresh",Toast.LENGTH_SHORT).show();
                        db.execSQL("UPDATE chatpause SET number='" + count+"" +"" + "' WHERE id='" + img+"" + "' and subid='" + imgsub+"" + "'");
                        chatBubbles.clear();
+                       adapter.clear();
                        adapter.notifyDataSetChanged();
                    }
                 }
