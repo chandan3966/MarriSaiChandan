@@ -104,7 +104,7 @@ public class ChatPage extends AppCompatActivity {
         b1 = findViewById(R.id.button);
         shadow = findViewById(R.id.shadow);
 
-        dbretrive();
+        dbretrive(); 
 
        imageretrive();
 
@@ -189,25 +189,25 @@ public class ChatPage extends AppCompatActivity {
         if (imgsub.equals("a")){
             if (img.equals("1")){
                 shadow.setImageResource(R.drawable.cat11);
-                rl.setBackgroundResource(R.drawable.emo1);
+                rl.setBackgroundResource(R.drawable.a1);
                 rece.setText("Sonia");
                 send.setText("Mum");
             }
             else if (img.equals("2")){
                 shadow.setImageResource(R.drawable.cat21);
-                rl.setBackgroundResource(R.drawable.fun);
+                rl.setBackgroundResource(R.drawable.b1);
                 rece.setText("Sunidhi");
                 send.setText("Aashi");
             }
             else if (img.equals("3")){
                 shadow.setImageResource(R.drawable.cat31);
-                rl.setBackgroundResource(R.drawable.anna);
+                rl.setBackgroundResource(R.drawable.c1);
                 rece.setText("Vijay");
                 send.setText("Doctor");
             }
             else{
                 shadow.setImageResource(R.drawable.cat41);
-                rl.setBackgroundResource(R.drawable.romance);
+                rl.setBackgroundResource(R.drawable.d1);
                 rece.setText("Sameer");
                 send.setText("Simran");
             }
@@ -215,7 +215,7 @@ public class ChatPage extends AppCompatActivity {
         else{
             if (img.equals("1")){
                 shadow.setImageResource(R.drawable.cat12);
-                rl.setBackgroundResource(R.drawable.emo2);
+                rl.setBackgroundResource(R.drawable.a2);
                 rece.setText("Mahira");
                 send.setText("Rehan");
             }
