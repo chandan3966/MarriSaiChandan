@@ -23,7 +23,7 @@
             android:id="@+id/img"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            app:srcCompat="@drawable/romantic" />
+            app:srcCompat="@drawable/host1" />
 
 
     </LinearLayout>

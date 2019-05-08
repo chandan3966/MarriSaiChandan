@@ -40,49 +40,50 @@ public class Main3Activity extends AppCompatActivity {
 
 
         showdialogbox();
-        sp = getSharedPreferences("mainselection", Context.MODE_PRIVATE);
-        img = sp.getString("img","NA");
+//        sp = getSharedPreferences("mainselection", Context.MODE_PRIVATE);
+//        img = sp.getString("img","NA");
 
 
         im = findViewById(R.id.imageView8);
         im1 = findViewById(R.id.imageView9);
         b1 = findViewById(R.id.button);
         shadow = findViewById(R.id.shadow);
+        shadow.setImageResource(R.drawable.toolbar);
 
-        if (img.equals("1")){
-            shadow.setImageResource(R.drawable.toolbar1);
-        }
-        else if (img.equals("2")){
-            shadow.setImageResource(R.drawable.toolbar2);
-            im.setImageResource(R.drawable.sheet11);
-            im1.setVisibility(View.GONE);
-        }
-        else if (img.equals("3")){
-            shadow.setImageResource(R.drawable.toolbar3);
-            im.setImageResource(R.drawable.sheet31);
-            im1.setVisibility(View.GONE);
-        }
-        else{
-            shadow.setImageResource(R.drawable.toolbar4);
-            im.setImageResource(R.drawable.sheet21);
-            im1.setVisibility(View.GONE);
-        }
+//        if (img.equals("1")){
+//
+//        }
+//        else if (img.equals("2")){
+//            shadow.setImageResource(R.drawable.toolbar2);
+//            im.setImageResource(R.drawable.sheet11);
+//            im1.setVisibility(View.GONE);
+//        }
+//        else if (img.equals("3")){
+//            shadow.setImageResource(R.drawable.toolbar3);
+//            im.setImageResource(R.drawable.sheet31);
+//            im1.setVisibility(View.GONE);
+//        }
+//        else{
+//            shadow.setImageResource(R.drawable.toolbar4);
+//            im.setImageResource(R.drawable.sheet21);
+//            im1.setVisibility(View.GONE);
+//        }
 
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Main3Activity.this,Main2Activity.class);
-                startActivity(i);
-                finish();
-            }
-        });
+//        b1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(Main3Activity.this,Main2Activity.class);
+//                startActivity(i);
+//                finish();
+//            }
+//        });
 
         sp1 = getSharedPreferences("mainselection", Context.MODE_PRIVATE);
         im.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (img.equals("1")){
+//                if (img.equals("1")){
                     if (!isNetworkConnected()){
                         showdialogbox();
                     }
@@ -94,57 +95,57 @@ public class Main3Activity extends AppCompatActivity {
                         edit.commit();
                         startActivity(i);
                     }
-
-                }
-                else if (img.equals("2")){
-                    if (!isNetworkConnected()){
-                        showdialogbox();
-                    }
-                    else{
-                        Intent i = new Intent(Main3Activity.this,ChatPage.class);
-                        SharedPreferences.Editor edit = sp1.edit();
-                        edit.putString("img","2");
-                        edit.putString("imgsub","a");
-                        edit.commit();
-                        startActivity(i);
-                    }
-
-                }
-                else if (img.equals("3")){
-                    if (!isNetworkConnected()){
-                        showdialogbox();
-                    }
-                    else{
-                        Intent i = new Intent(Main3Activity.this,ChatPage.class);
-                        SharedPreferences.Editor edit = sp1.edit();
-                        edit.putString("img","3");
-                        edit.putString("imgsub","a");
-                        edit.commit();
-                        startActivity(i);
-                    }
-
-                }
-                else {
-                    if (!isNetworkConnected()){
-                        showdialogbox();
-                    }
-                    else{
-                        Intent i = new Intent(Main3Activity.this,ChatPage.class);
-                        SharedPreferences.Editor edit = sp1.edit();
-                        edit.putString("img","4");
-                        edit.putString("imgsub","a");
-                        edit.commit();
-                        startActivity(i);
-                    }
-
-                }
+//
+//                }
+//                else if (img.equals("2")){
+//                    if (!isNetworkConnected()){
+//                        showdialogbox();
+//                    }
+//                    else{
+//                        Intent i = new Intent(Main3Activity.this,ChatPage.class);
+//                        SharedPreferences.Editor edit = sp1.edit();
+//                        edit.putString("img","2");
+//                        edit.putString("imgsub","a");
+//                        edit.commit();
+//                        startActivity(i);
+//                    }
+//
+//                }
+//                else if (img.equals("3")){
+//                    if (!isNetworkConnected()){
+//                        showdialogbox();
+//                    }
+//                    else{
+//                        Intent i = new Intent(Main3Activity.this,ChatPage.class);
+//                        SharedPreferences.Editor edit = sp1.edit();
+//                        edit.putString("img","3");
+//                        edit.putString("imgsub","a");
+//                        edit.commit();
+//                        startActivity(i);
+//                    }
+//
+//                }
+//                else {
+//                    if (!isNetworkConnected()){
+//                        showdialogbox();
+//                    }
+//                    else{
+//                        Intent i = new Intent(Main3Activity.this,ChatPage.class);
+//                        SharedPreferences.Editor edit = sp1.edit();
+//                        edit.putString("img","4");
+//                        edit.putString("imgsub","a");
+//                        edit.commit();
+//                        startActivity(i);
+//                    }
+//
+//                }
             }
         });
 
         im1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (img.equals("1")){
+//                if (img.equals("1")){
                     if (!isNetworkConnected()){
                         showdialogbox();
                     }
@@ -157,49 +158,49 @@ public class Main3Activity extends AppCompatActivity {
                         startActivity(i);
                     }
 
-                }
-                else if (img.equals("2")){
-                    if (!isNetworkConnected()){
-                        showdialogbox();
-                    }
-                    else{
-                        Intent i = new Intent(Main3Activity.this,ChatPage.class);
-                        SharedPreferences.Editor edit = sp1.edit();
-                        edit.putString("img","2");
-                        edit.putString("imgsub","b");
-                        edit.commit();
-                        startActivity(i);
-                    }
-
-                }
-                else if (img.equals("3")){
-                    if (!isNetworkConnected()){
-                        showdialogbox();
-                    }
-                    else{
-                        Intent i = new Intent(Main3Activity.this,ChatPage.class);
-                        SharedPreferences.Editor edit = sp1.edit();
-                        edit.putString("img","3");
-                        edit.putString("imgsub","b");
-                        edit.commit();
-                        startActivity(i);
-                    }
-
-                }
-                else {
-                    if (!isNetworkConnected()){
-                        showdialogbox();
-                    }
-                    else{
-                        Intent i = new Intent(Main3Activity.this,ChatPage.class);
-                        SharedPreferences.Editor edit = sp1.edit();
-                        edit.putString("img","4");
-                        edit.putString("imgsub","b");
-                        edit.commit();
-                        startActivity(i);
-                    }
-
-                }
+//                }
+//                else if (img.equals("2")){
+//                    if (!isNetworkConnected()){
+//                        showdialogbox();
+//                    }
+//                    else{
+//                        Intent i = new Intent(Main3Activity.this,ChatPage.class);
+//                        SharedPreferences.Editor edit = sp1.edit();
+//                        edit.putString("img","2");
+//                        edit.putString("imgsub","b");
+//                        edit.commit();
+//                        startActivity(i);
+//                    }
+//
+//                }
+//                else if (img.equals("3")){
+//                    if (!isNetworkConnected()){
+//                        showdialogbox();
+//                    }
+//                    else{
+//                        Intent i = new Intent(Main3Activity.this,ChatPage.class);
+//                        SharedPreferences.Editor edit = sp1.edit();
+//                        edit.putString("img","3");
+//                        edit.putString("imgsub","b");
+//                        edit.commit();
+//                        startActivity(i);
+//                    }
+//
+//                }
+//                else {
+//                    if (!isNetworkConnected()){
+//                        showdialogbox();
+//                    }
+//                    else{
+//                        Intent i = new Intent(Main3Activity.this,ChatPage.class);
+//                        SharedPreferences.Editor edit = sp1.edit();
+//                        edit.putString("img","4");
+//                        edit.putString("imgsub","b");
+//                        edit.commit();
+//                        startActivity(i);
+//                    }
+//
+//                }
             }
         });
 
@@ -236,13 +237,13 @@ public class Main3Activity extends AppCompatActivity {
         return cm.getActiveNetworkInfo() != null;
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK){
-            Intent i = new Intent(Main3Activity.this,Main2Activity.class);
-            startActivity(i);
-            finish();
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK){
+//            Intent i = new Intent(Main3Activity.this,Main3Activity.class);
+//            startActivity(i);
+//            finish();
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 }

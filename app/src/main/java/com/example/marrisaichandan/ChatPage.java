@@ -228,24 +228,24 @@ public class ChatPage extends AppCompatActivity {
                 rece.setText("Sonia");
                 send.setText("Mum");
             }
-            else if (img.equals("2")){
-                shadow.setImageResource(R.drawable.cat21);
-                rl.setBackgroundResource(R.drawable.b1);
-                rece.setText("Sunidhi");
-                send.setText("Aashi");
-            }
-            else if (img.equals("3")){
-                shadow.setImageResource(R.drawable.cat31);
-                rl.setBackgroundResource(R.drawable.c1);
-                rece.setText("Vijay");
-                send.setText("Doctor");
-            }
-            else{
-                shadow.setImageResource(R.drawable.cat41);
-                rl.setBackgroundResource(R.drawable.d1);
-                rece.setText("Sameer");
-                send.setText("Simran");
-            }
+//            else if (img.equals("2")){
+//                shadow.setImageResource(R.drawable.cat21);
+//                rl.setBackgroundResource(R.drawable.b1);
+//                rece.setText("Sunidhi");
+//                send.setText("Aashi");
+//            }
+//            else if (img.equals("3")){
+//                shadow.setImageResource(R.drawable.cat31);
+//                rl.setBackgroundResource(R.drawable.c1);
+//                rece.setText("Vijay");
+//                send.setText("Doctor");
+//            }
+//            else{
+//                shadow.setImageResource(R.drawable.cat41);
+//                rl.setBackgroundResource(R.drawable.d1);
+//                rece.setText("Sameer");
+//                send.setText("Simran");
+//            }
         }
         else{
             if (img.equals("1")){
@@ -254,15 +254,15 @@ public class ChatPage extends AppCompatActivity {
                 rece.setText("Mahira");
                 send.setText("Rehan");
             }
-            else if (img.equals("2")){
-//            shadow.setImageResource(R.drawable.cat21);
-            }
-            else if (img.equals("3")){
-//            shadow.setImageResource(R.drawable.cat31);
-            }
-            else{
-//            shadow.setImageResource(R.drawable.cat41);
-            }
+//            else if (img.equals("2")){
+////            shadow.setImageResource(R.drawable.cat21);
+//            }
+//            else if (img.equals("3")){
+////            shadow.setImageResource(R.drawable.cat31);
+//            }
+//            else{
+////            shadow.setImageResource(R.drawable.cat41);
+//            }
         }
     }
 
