@@ -10,6 +10,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Intent i = new Intent(MainActivity.this,Main3Activity.class);
+                        Animatoo.animateFade(MainActivity.this);
                         startActivity(i);
                         finish();
                     }
